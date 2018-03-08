@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>TGIF - House Loyalty</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+
+</head>
+
+<body id="loyalty">
+    <div class="container">
+        <div class="row">
+            <a class="logo-text" href="#">Transparent Government in Fact</a>
+        </div>
+        <div class="row">
+            <nav class="navbar">
+                <ul class="nav">
+                    <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Congress 113<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="senate-data.html">Senate</a></li>
+                            <li class="list-group-item"><a href="house-data.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Attendance<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="senate-attendance.html">Senate</a></li>
+                            <li class="list-group-item"><a href="house-attendance.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Party Loyalty<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="senate-loyalty.html">Senate</a></li>
+                            <li class="list-group-item"><a href="house-loyalty.html">House</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda.</p>
+            </div>
+            <div class="col">
+                <h2>House at a glance</h2>
+                <table id="atAGlance" class="table">
+                    <thead>
+                        <tr>
+                          <th>Party</th>
+                          <th>Number of Reps</th>
+                          <th>% Voted with Party</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Democrats</td>
+                        </tr>
+                        <tr>
+                            <td>Republicans</td>
+                        </tr>
+                        <tr>
+                            <td>Independents</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Least loyal (bottom 10% of party)</h2>
+                <table class="table" id="lessLoyal">
+                     <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>No. of Party Votes</th>
+                          <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h2>Most loyal (top 10% of party)</h2>
+                <table class="table" id="mostLoyal">
+                     <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>No. of Party Votes</th>
+                          <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row footer">2016 TGIF| All rights reserved</div>
+
+    </div>
+    <!-- libraries for bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!---json data and my script-->
+    <script src="js/statistics.js"></script>
+    <script src="js/fetch_house_statistics.js"></script>
+</body>
+
+</html>

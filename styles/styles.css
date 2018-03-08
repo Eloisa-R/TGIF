@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/*general styles*/
+
+body {
+    height: fit-content;
+    width: 100vw;
+    overflow-x: hidden;
+    background: url("../background.jpg") no-repeat;
+    background-size: cover;
+}
+
+/*index page styles*/
+
+
+.main {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #3B3F4B;
+
+}
+
+.image-main {
+    -webkit-clip-path: circle(20% at 50% 3%);
+    clip-path: circle(20% at 50% 3%);
+    width: 100%;
+    height: 100%;
+}
+
+.surface-text {
+    position: absolute;
+    top: 40vh;
+    left: 25vw;
+    background: url("../iceberg2_text.jpg") no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 3vw;
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    font-weight: 200;
+
+}
+
+.transparency-text{
+    visibility: hidden;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    background: url("../iceberg2_text.jpg") no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 3vw;
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    font-weight: 200;
+    
+}
+
+.image-main:hover {
+    -webkit-clip-path: circle(88.4% at 52% 9%);
+    clip-path: circle(88.4% at 52% 9%);
+    -webkit-transition: all 0.9s ease-out;
+    -moz-transition: all 0.9s ease-out;
+    transition: all 0.9s ease-out;
+}
+
+.image-main:hover + .surface-text {
+    display: none;
+}
+
+.image-main:hover + .transparency-text {
+    visibility: visible;
+}
+
+
+/*home, senate & house styles*/
+.btn-info{
+    margin-top: 2px;
+}
+
+.close-button{
+    background: none;
+    border: none;
+    margin-left: 6%;
+    color: white;
+    text-decoration: none;
+}
+.container-fluid{
+    background-color: #3B3F4B;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+.main-menu {
+    background-color: lightgrey;
+    padding: 0.75%;
+}
+
+.header-container {
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.main-menu-item {
+    border: none;
+    background: none;
+}
+
+.main-menu-item:hover {
+    background-color: darkgrey;
+}
+
+.footer {
+    margin: auto;
+    padding: 1%;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+.logo-container {
+    height: 100%;
+}
+
+
+.logo {
+    width: 10%;
+}
+
+
+nav {
+    height: 20%;
+}
+
+
+.home-container {
+    display: flex;
+    vertical-align: middle;
+}
+
+.text-child {
+    padding-right: 1%;
+    text-align: justify;
+}
+
+.image-child {
+    height: 100%;
+}
+
+.home-font {
+    font-size: 18px;
+}
+
+.checkbox-field {
+    display: flex;
+}
+
+
+
+label {
+    margin: 0.5%;
+}
+
+.filters-container {
+    display: flex;
+}
+
+fieldset {
+    flex-grow: 1;
+}
+
+.dropdown-states {
+    text-align: right;
+}
+
+
+.logo-text {
+    background: url("../iceberg2_text.jpg") no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 3vw;
+    font-family: Montserrat, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+}
+
+.logo-text:hover {
+    text-decoration: none;
+}
+
+.text-logo-div {
+    vertical-align: bottom;
+    height: 20%;
+}
+
+#errorMessage {
+    display: none;
+    color: red;
+}
+
+.state-legend {
+    width: 30%;
+}
+
+#outputStates {
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+
+#appendResults {
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+.text-row {
+    padding-left: 8px;
+}

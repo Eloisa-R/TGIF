@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>TGIF - House</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/styles.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <a class="logo-text" href="#">Transparent Government in Fact</a>
+        </div>
+        <div class="row">
+            <nav class="navbar">
+                <ul class="nav">
+                    <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Congress 113<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="senate-data.html">Senate</a></li>
+                            <li class="list-group-item"><a href="house-data.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Attendance<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="senate-attendance.html">Senate</a></li>
+                            <li class="list-group-item"><a href="house-attendance.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Party Loyalty<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="list-group-item"><a href="senate-loyalty.html">Senate</a></li>
+                            <li class="list-group-item"><a href="house-loyalty.html">House</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--Table container-->
+        <div class="row text-row">
+            <h2>Congressmen</h2>
+            <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+            <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+        </div>
+        <div class="row">
+            <div class="col-9">
+                <table id="senate-data" class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Party</th>
+                            <th>State</th>
+                            <th>Years in Office</th>
+                            <th>% Votes with Party</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div id="errorMessage">
+                    <p>The search returned no results</p>
+                </div>
+            </div>
+            <div class="col-3">
+                <fieldset>
+                    <legend>Filter by Party:</legend>
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="cb-D" value="D"><label class="custom-control-label" for="cb-D">Democrat</label>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="cb-R" value="R"><label class="custom-control-label" for="cb-R">Republican</label>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="cb-I" value="I"><label class="custom-control-label" for="cb-I">Independent</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Filter by State:</legend>
+                    <select id="dropdownStates" class="dropdown-states custom-select">
+                       <option value="default">--Choose a State--</option> 
+                    </select>
+                </fieldset>
+                <div id="appendResults"></div>
+            </div>
+        </div>
+        <div class="row footer">2016 TGIF| All rights reserved</div>
+
+    </div>
+    <!-- libraries for bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!---json data and my script-->
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/main_functions_house_senate.js"></script>
+    <script src="js/fetch_house.js"></script>
+</body>
+
+</html>
