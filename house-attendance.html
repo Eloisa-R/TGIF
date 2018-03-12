@@ -11,7 +11,7 @@
 </head>
 
 <body id="attendance">
-    <div class="container">
+    <div class="container" id="houseAttendance">
         <div class="row">
             <a class="logo-text" href="#">Transparent Government in Fact</a>
         </div>
@@ -50,6 +50,7 @@
 
                 <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
             </div>
+
             <div class="col">
                 <h2>House at a glance</h2>
                 <table id="atAGlance" class="table">
@@ -63,48 +64,66 @@
                     <tbody>
                         <tr>
                             <td>Democrats</td>
+                            <td>{{ count["D"][0]}}</td>
+                            <td>{{ count["D_voted"].toFixed(2)}}</td>
                         </tr>
                         <tr>
                             <td>Republicans</td>
+                            <td>{{ count["R"][0]}}</td>
+                            <td>{{ count["R_voted"].toFixed(2)}}</td>
                         </tr>
                         <tr>
                             <td>Independents</td>
+                            <td>{{ count["I"][0]}}</td>
+                            <td>{{ count["I_voted"].toFixed(2)}}</td>
                         </tr>
                         <tr>
                             <td>Total</td>
+                            <td>{{ count["total"][0]}} </td>
+                            <td>{{ count["total_voted"].toFixed(2)}} </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h2>Least engaged (bottom 10% attendance)</h2>
-                <table class="table" id="bottomAttendance">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>No. of Missed Votes</th>
-                            <th>% Missed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col">
-                <h2>Most engaged (top 10% attendance)</h2>
-                <table class="table" id="topAttendance">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>No. of Missed Votes</th>
-                            <th>% Missed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+            <div class="row">
+                <div class="col">
+                    <h2>Least engaged (bottom 10% attendance)</h2>
+                    <table class="table" id="bottomAttendance">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>No. of Missed Votes</th>
+                                <th>% Missed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="memberM in membersMoreMissed" v-if="parseFloat(memberM.missed_votes_pct) >= parseFloat(membersMoreLimit)">
+                                <td>{{ memberM.last_name }}, {{ memberM.first_name }} {{ memberM.middle_name }}</td>
+                                <td>{{ memberM.missed_votes }}</td>
+                                <td>{{ memberM.missed_votes_pct }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <h2>Most engaged (top 10% attendance)</h2>
+                    <table class="table" id="topAttendance">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>No. of Missed Votes</th>
+                                <th>% Missed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="memberL in memberLeastMissed" v-if="parseFloat(memberL.missed_votes_pct) <= parseFloat(membersLeastLimit)">
+                                <td>{{ memberL.last_name }}, {{ memberL.first_name }} {{ memberL.middle_name }}</td>
+                                <td>{{ memberL.missed_votes }}</td>
+                                <td>{{ memberL.missed_votes_pct }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <div class="row footer">2016 TGIF| All rights reserved</div>
@@ -115,8 +134,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!---json data and my script-->
-    <script src="js/statistics.js"></script>
-    <script src="js/fetch_house_statistics.js"></script>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/vue_house_attendance.js"></script>
 </body>
 
 </html>
