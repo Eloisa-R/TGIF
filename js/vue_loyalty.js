@@ -2,8 +2,10 @@
 /*eslint "no-console": "off" */
 /*global $ */
 
+var data_url = "";
+
 var tablesApp = new Vue({
-    el: "#houseAttendance",
+    el: "#tableLoyalty",
     data: {
         members: [],
         count: {
@@ -19,25 +21,25 @@ var tablesApp = new Vue({
     },
 
     computed: {
-        membersMoreMissed: function () {
+        membersMoreVoted: function () {
             function compare(a, b) {
-                if (parseFloat(a.missed_votes_pct) > parseFloat(b.missed_votes_pct)) {
+                if (parseFloat(a.votes_with_party_pct) > parseFloat(b.votes_with_party_pct)) {
                     return -1;
-                } else if (parseFloat(a.missed_votes_pct) < parseFloat(b.missed_votes_pct)) {
+                } else if (parseFloat(a.votes_with_party_pct) < parseFloat(b.votes_with_party_pct)) {
                     return 1;
-                } else if (parseFloat(a.missed_votes_pct) === parseFloat(b.missed_votes_pct)) {
+                } else if (parseFloat(a.votes_with_party_pct) === parseFloat(b.votes_with_party_pct)) {
                     return 0;
                 }
             }
             return this.members.sort(compare);
         },
-        memberLeastMissed: function () {
+        memberLeastVoted: function () {
             function compare(a, b) {
-                if (parseFloat(a.missed_votes_pct) < parseFloat(b.missed_votes_pct)) {
+                if (parseFloat(a.votes_with_party_pct) < parseFloat(b.votes_with_party_pct)) {
                     return -1;
-                } else if (parseFloat(a.missed_votes_pct) > parseFloat(b.missed_votes_pct)) {
+                } else if (parseFloat(a.votes_with_party_pct) > parseFloat(b.votes_with_party_pct)) {
                     return 1;
-                } else if (parseFloat(a.missed_votes_pct) === parseFloat(b.missed_votes_pct)) {
+                } else if (parseFloat(a.votes_with_party_pct) === parseFloat(b.votes_with_party_pct)) {
                     return 0;
                 }
             }
@@ -45,11 +47,11 @@ var tablesApp = new Vue({
         },
         membersMoreLimit: function () {
             var ten_percent = Math.round(this.members.length / 10)
-            return this.membersMoreMissed[ten_percent + 1].missed_votes_pct
+            return this.membersMoreVoted[ten_percent + 1].votes_with_party_pct
         },
         membersLeastLimit: function () {
             var ten_percent = Math.round(this.members.length / 10)
-            return this.memberLeastMissed[ten_percent + 1].missed_votes_pct
+            return this.memberLeastVoted[ten_percent + 1].votes_with_party_pct
         }
     },
     methods: {
@@ -70,7 +72,13 @@ var tablesApp = new Vue({
 })
 
 
-$.getJSON("https://api.myjson.com/bins/w5j7d", function (data) {
+if ( $( "#senate" ).length ) {
+    data_url = senate_url;
+} else if ( $( "#house" ).length ) {
+    data_url = house_url;
+}
+
+$.getJSON(data_url, function (data) {
     data.results[0].members.map(function (member) {
         tablesApp.members.push(member);
     })

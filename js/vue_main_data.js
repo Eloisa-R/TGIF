@@ -2,9 +2,10 @@
 /*eslint "no-console": "off" */
 /*global $ */
 
+var data_url = ""
 
 var tableApp = new Vue({
-    el: "#tableHouse",
+    el: "#tableData",
     data: {
         members: [],
         selected: "disabled",
@@ -30,13 +31,19 @@ var tableApp = new Vue({
 })
 
 
-$.getJSON("https://api.myjson.com/bins/1564e1", function (data) {
+$.getJSON(states_json_url, function (data) {
     tableApp.states_list = data;
 })
 
+if ( $( "#senate" ).length ) {
+    data_url = senate_url;
+} else if ( $( "#house" ).length ) {
+    data_url = house_url;
+}
+
 $(document).ready(function () {
     var control_array = []
-    $.getJSON("https://api.myjson.com/bins/w5j7d", function (data) {
+    $.getJSON(data_url, function (data) {
         data.results[0].members.map(function (member) {
             tableApp.members.push(member);
             if (!control_array.includes(member.state)) {
