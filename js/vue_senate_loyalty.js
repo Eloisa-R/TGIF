@@ -56,9 +56,9 @@ var tablesApp = new Vue({
         countPols: function () {
             this.members.forEach(function (element) {
                 tablesApp.count[element.party][0] += 1;
-                tablesApp.count[element.party].splice(1, 1, tablesApp.count[element.party][1] + parseFloat(element.missed_votes_pct));
+                tablesApp.count[element.party].splice(1, 1, tablesApp.count[element.party][1] + parseFloat(element.votes_with_party_pct));
                 tablesApp.count["total"][0] = tablesApp.count["total"][0] + 1;
-                tablesApp.count["total"].splice(1, 1, tablesApp.count["total"][1] + parseFloat(element.missed_votes_pct));
+                tablesApp.count["total"].splice(1, 1, tablesApp.count["total"][1] + parseFloat(element.votes_with_party_pct));
             })
             this.count["D_voted"] = this.count["D"][1] / this.count["D"][0]
             this.count["R_voted"] = this.count["R"][1] / this.count["R"][0]
