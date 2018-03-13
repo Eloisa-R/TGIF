@@ -7,7 +7,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
-
+    <link rel="stylesheet" href="styles/colorbox.css">
 </head>
 
 <body id="house">
@@ -96,7 +96,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="memberL in memberLeastVoted" v-if="parseFloat(memberL.votes_with_party_pct) <= parseFloat(membersLeastLimit)">
-                            <td>{{ memberL.last_name }}, {{ memberL.first_name }} {{ memberL.middle_name }}</td>
+                            <td><a v-bind:href="memberL.url" class="iframe">{{ memberL.last_name }}, {{ memberL.first_name }} {{ memberL.middle_name }}</a></td>
                             <td>{{ memberL.total_votes }}</td>
                             <td>{{ memberL.votes_with_party_pct }}</td>
                         </tr>
@@ -115,7 +115,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="memberM in membersMoreVoted" v-if="parseFloat(memberM.votes_with_party_pct) >= parseFloat(membersMoreLimit)">
-                            <td>{{ memberM.last_name }}, {{ memberM.first_name }} {{ memberM.middle_name }}</td>
+                            <td><a v-bind:href="memberM.url" class="iframe">{{ memberM.last_name }}, {{ memberM.first_name }} {{ memberM.middle_name }}</a></td>
                             <td>{{ memberM.total_votes }}</td>
                             <td>{{ memberM.votes_with_party_pct }}</td>
                         </tr>
@@ -133,6 +133,7 @@
     <!---json data and my script-->
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/vue.js"></script>
+    <script src="js/jquery.colorbox-min.js"></script>
     <script src="js/urls.js"></script>
     <script src="js/vue_loyalty.js"></script>
 </body>

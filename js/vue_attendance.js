@@ -67,6 +67,15 @@ var tablesApp = new Vue({
             this.count["I_voted"] = this.count["I"][1] / this.count["I"][0]
             this.count["total_voted"] = this.count["total"][1] / this.count["total"][0]
         }
+    },
+    updated: function (){
+        this.$nextTick(function() {
+        $('a.iframe').colorbox({
+            iframe: true,
+            width: "60%",
+            height: "60%"
+            })
+        })
     }
 
 })

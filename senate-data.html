@@ -7,6 +7,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/colorbox.css">
 </head>
 
 <body id="senate">
@@ -67,7 +68,7 @@
                     </thead>
                     <tbody>
                         <tr v-for="member in members" v-if="(selectedStatesArray.includes(member.state)  || selectedStatesArray.length === 0) && (checkedParties.includes(member.party) || checkedParties.length === 0)">
-                            <td><a v-bind:href="member.url">{{ member.last_name }}, {{ member.first_name }} {{ member.middle_name }}</a></td>
+                            <td><a v-bind:href="member.url" class="iframe">{{ member.last_name }}, {{ member.first_name }} {{ member.middle_name }}</a></td>
                             <td>{{ member.party }}</td>
                             <td>{{ member.state }}</td>
                             <td>{{ member.seniority }}</td>
@@ -103,7 +104,6 @@
                         <div class="btn btn-info" v-bind:value="item">{{ states_list[item] }} <button class="close-button" v-on:click="removeFromArray">X</button> </div>
                     </div>
                 </div>
-                <div id="appendResults"></div>
             </div>
         </div>
         <div class="footer row">2016 TGIF| All rights reserved</div>
@@ -116,6 +116,7 @@
     <!---json daya and my script-->
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/vue.js"></script>
+    <script src="js/jquery.colorbox-min.js"></script>
     <script src="js/urls.js"></script>
     <script src="js/vue_main_data.js"></script>
 </body>

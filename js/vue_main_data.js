@@ -26,6 +26,16 @@ var tableApp = new Vue({
             this.selectedStatesArray.splice(this.selectedStatesArray.indexOf(event.target.parentElement.getAttribute('value')), 1)
 
         }
+    },
+    
+    updated: function (){
+        this.$nextTick(function() {
+        $('a.iframe').colorbox({
+            iframe: true,
+            width: "60%",
+            height: "60%"
+            })
+        })
     }
 
 })
