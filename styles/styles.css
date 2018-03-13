@@ -3,8 +3,8 @@
 /*general styles*/
 
 body {
-    height: fit-content;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     overflow-x: hidden;
     background: url("../background.jpg") no-repeat;
     background-size: cover;
@@ -233,4 +233,23 @@ fieldset {
 
 .text-row {
     padding-left: 8px;
+}
+
+.loader {
+    position: absolute;
+    background-color: white;
+    opacity: 0.6;
+    top: 0; 
+    right: 0; 
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+.gif {
+    margin-left: 30%;
+    margin-top: 15%;
+
 }

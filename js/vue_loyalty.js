@@ -68,23 +68,27 @@ var tablesApp = new Vue({
             this.count["total_voted"] = this.count["total"][1] / this.count["total"][0]
         }
     },
-    
-    updated: function (){
-        this.$nextTick(function() {
-        $('a.iframe').colorbox({
-            iframe: true,
-            width: "60%",
-            height: "60%"
-            })
+
+    updated: function () {
+        this.$nextTick(function () {
+            $('a.iframe').colorbox({
+                iframe: true,
+                width: "60%",
+                height: "60%"
+            });
+            if ($('#lessLoyal > tbody > tr').length) {
+                $('#loader').fadeOut()
+            }
         })
-    }
+    },
+
 
 })
 
 
-if ( $( "#senate" ).length ) {
+if ($("#senate").length) {
     data_url = senate_url;
-} else if ( $( "#house" ).length ) {
+} else if ($("#house").length) {
     data_url = house_url;
 }
 

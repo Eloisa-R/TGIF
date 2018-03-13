@@ -36,6 +36,9 @@ var tableApp = new Vue({
             height: "60%"
             })
         })
+       if ($('#mainData > tbody > tr').length) {
+                $('#loader').fadeOut()
+            }
     }
 
 })

@@ -75,6 +75,9 @@ var tablesApp = new Vue({
             width: "60%",
             height: "60%"
             })
+        if ($('#bottomAttendance > tbody > tr').length) {
+                $('#loader').fadeOut()
+            }
         })
     }
 
