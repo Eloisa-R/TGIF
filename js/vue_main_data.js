@@ -7,12 +7,34 @@ var data_url = ""
 var tableApp = new Vue({
     el: "#tableData",
     data: {
+        search: '',
         members: [],
         selected: "disabled",
         options: [],
         checkedParties: [],
         selectedStatesArray: [],
-        states_list: {}
+        states_list: {},
+        headers: [{
+                text: 'Name',
+                value: 'last_name'
+            },
+            {
+                text: 'Party',
+                value: 'party'
+            },
+            {
+                text: 'State',
+                value: 'state'
+                  },
+            {
+                text: 'Years in Office',
+                value: 'seniority'
+                  },
+            {
+                text: '% Votes with Party',
+                value: 'votes_with_party_pct'
+            }
+                 ]
     },
 
     methods: {
@@ -22,23 +44,43 @@ var tableApp = new Vue({
             }
             this.selected = "disabled"
         },
-        removeFromArray: function () {
+        removeFromArray: function (event) {
             this.selectedStatesArray.splice(this.selectedStatesArray.indexOf(event.target.parentElement.getAttribute('value')), 1)
 
-        }
+        },
+        
+        showBox: function() {
+           $('a.iframe').colorbox({
+                    iframe: true,
+                    width: "60%",
+                    height: "60%"
+                })
+      }
     },
     
-    updated: function (){
-        this.$nextTick(function() {
-        $('a.iframe').colorbox({
-            iframe: true,
-            width: "60%",
-            height: "60%"
+    computed: {
+        filteredMembers: function () {
+            function statesAndParties(member) {
+                if ((tableApp.selectedStatesArray.includes(member.state)  || tableApp.selectedStatesArray.length === 0) && (tableApp.checkedParties.includes(member.party) || tableApp.checkedParties.length === 0)) {
+                    return member
+                }
+            }
+            
+            return this.members.filter(statesAndParties)
+        }
+    },
+
+    updated: function () {
+        this.$nextTick(function () {
+            $('a.iframe').colorbox({
+                iframe: true,
+                width: "60%",
+                height: "60%"
             })
         })
-       if ($('#mainData > tbody > tr').length) {
-                $('#loader').fadeOut()
-            }
+        if ($('tbody > tr').length > 1) {
+            $('#loader').fadeOut()
+        }
     }
 
 })
@@ -48,9 +90,9 @@ $.getJSON(states_json_url, function (data) {
     tableApp.states_list = data;
 })
 
-if ( $( "#senate" ).length ) {
+if ($("#senate").length) {
     data_url = senate_url;
-} else if ( $( "#house" ).length ) {
+} else if ($("#house").length) {
     data_url = house_url;
 }
 
@@ -71,3 +113,4 @@ $(document).ready(function () {
         })
     })
 })
+

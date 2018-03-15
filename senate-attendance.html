@@ -8,128 +8,108 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/colorbox.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
 </head>
 
 <body id="senate">
-   <div class="loader" id="loader">
-        <img class="gif" src="load-dribbble.gif" alt="">
-    </div>
-    <div class="container" id="tableAttendance">
-        <div class="row">
-            <a class="logo-text" href="#">Transparent Government in Fact</a>
-        </div>
-        <div class="row">
-            <nav class="navbar">
-                <ul class="nav">
-                    <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Congress 113<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="list-group-item"><a href="senate-data.html">Senate</a></li>
-                            <li class="list-group-item"><a href="house-data.html">House</a></li>
+  <div id="app">
+        <v-app>
+           <div data-app="true">
+            <div class="loader" id="loader">
+                <img class="gif" src="load-dribbble.gif" alt="">
+            </div>
+            <div class="container" id="tableAttendance">
+                <div class="row">
+                    <a class="logo-text" href="#">Transparent Government in Fact</a>
+                </div>
+                <div class="row">
+                    <nav class="navbar">
+                        <ul class="nav">
+                            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Congress 113<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="list-group-item"><a href="senate-data.html">Senate</a></li>
+                                    <li class="list-group-item"><a href="house-data.html">House</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Attendance<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="list-group-item"><a href="senate-attendance.html">Senate</a></li>
+                                    <li class="list-group-item"><a href="house-attendance.html">House</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Party Loyalty<span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="list-group-item"><a href="senate-loyalty.html">Senate</a></li>
+                                    <li class="list-group-item"><a href="house-loyalty.html">House</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Attendance<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="list-group-item"><a href="senate-attendance.html">Senate</a></li>
-                            <li class="list-group-item"><a href="house-attendance.html">House</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" href="#">Party Loyalty<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="list-group-item"><a href="senate-loyalty.html">Senate</a></li>
-                            <li class="list-group-item"><a href="house-loyalty.html">House</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h2>Attendance</h2>
-                <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h2>Attendance</h2>
+                        <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
 
-                <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
-            </div>
-            <div class="col">
-                <h2>Senate at a glance</h2>
-                <table id="atAGlance" class="table">
-                    <thead>
-                        <tr>
-                            <th>Party</th>
-                            <th>Number of Reps</th>
-                            <th>% Voted with Party</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Democrats</td>
-                            <td>{{ count["D"][0]}}</td>
-                            <td>{{ count["D_voted"].toFixed(2)}}</td>
-                        </tr>
-                        <tr>
-                            <td>Republicans</td>
-                            <td>{{ count["R"][0]}}</td>
-                            <td>{{ count["R_voted"].toFixed(2)}}</td>
-                        </tr>
-                        <tr>
-                            <td>Independents</td>
-                            <td>{{ count["I"][0]}}</td>
-                            <td>{{ count["I_voted"].toFixed(2)}}</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td>{{ count["total"][0]}} </td>
-                            <td>{{ count["total_voted"].toFixed(2)}} </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <h2>Least engaged (bottom 10% attendance)</h2>
-                <table class="table" id="bottomAttendance">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>No. of Missed Votes</th>
-                                <th>% Missed</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="memberM in membersMoreMissed" v-if="parseFloat(memberM.missed_votes_pct) >= parseFloat(membersMoreLimit)">
-                                <td><a v-bind:href="memberM.url" class="iframe">{{ memberM.last_name }}, {{ memberM.first_name }} {{ memberM.middle_name }}</a></td>
-                                <td>{{ memberM.missed_votes }}</td>
-                                <td>{{ memberM.missed_votes_pct }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </div>
-            <div class="col">
-                <h2>Most engaged (top 10% attendance)</h2>
-                <table class="table" id="topAttendance">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>No. of Missed Votes</th>
-                                <th>% Missed</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="memberL in memberLeastMissed" v-if="parseFloat(memberL.missed_votes_pct) <= parseFloat(membersLeastLimit)">
-                                <td><a v-bind:href="memberL.url" class="iframe">{{ memberL.last_name }}, {{ memberL.first_name }} {{ memberL.middle_name }}</a></td>
-                                <td>{{ memberL.missed_votes }}</td>
-                                <td>{{ memberL.missed_votes_pct }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </div>
-        </div>
-        <div class="row footer">2016 TGIF| All rights reserved</div>
+                        <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+                    </div>
 
+                    <div class="col">
+                        <v-card>
+                            <v-card-title>
+                                House at a glance
+                                <v-spacer></v-spacer>
+                            </v-card-title>
+                            <v-data-table :headers="headers_main" :items="count" hide-actions>
+                                <template slot="items" slot-scope="props">
+                                        <td class="text-xs-right">{{ props.item.party_name }}</td>
+                                        <td class="text-xs-right">{{ props.item.number_reps }}</td>
+                                        <td class="text-xs-right">{{ props.item.pct_votes_with_party.toFixed(2) }}</td>
+                                    </template>
+                            </v-data-table>
+                        </v-card>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <v-card>
+                                <v-card-title>
+                                    Least engaged (bottom 10% attendance)
+                                    <v-spacer></v-spacer>
+                                </v-card-title>
+                                <v-data-table :headers="headers_tables" :items="membersMoreLimited">
+                                    <template slot="items" slot-scope="props">
+                                        <td class="text-xs-right"><a v-bind:href="props.item.url" @click="showBox" class="iframe">{{ props.item.last_name }}, {{ props.item.first_name }} {{ props.item.middle_name }}</a></td>
+                                        <td class="text-xs-right">{{ props.item.missed_votes }}</td>
+                                        <td class="text-xs-right">{{ props.item.missed_votes_pct }}</td>
+                                    </template>
+                                </v-data-table>
+                            </v-card>
+                        </div>
+                        <div class="col">
+                          <v-card>
+                                <v-card-title>
+                                    Most engaged (top 10% attendance)
+                                    <v-spacer></v-spacer>
+                                </v-card-title>
+                                <v-data-table :headers="headers_tables" :items="membersLeastLimited">
+                                    <template slot="items" slot-scope="props">
+                                        <td class="text-xs-right"><a v-bind:href="props.item.url" @click="showBox" class="iframe">{{ props.item.last_name }}, {{ props.item.first_name }} {{ props.item.middle_name }}</a></td>
+                                        <td class="text-xs-right">{{ props.item.missed_votes }}</td>
+                                        <td class="text-xs-right">{{ props.item.missed_votes_pct }}</td>
+                                    </template>
+                                </v-data-table>
+                            </v-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </v-app>
     </div>
     <!-- libraries for bootstrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -139,6 +119,7 @@
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/jquery.colorbox-min.js"></script>
+    <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
     <script src="js/urls.js"></script>
     <script src="js/vue_attendance.js"></script>
 </body>
