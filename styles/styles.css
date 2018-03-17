@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Meddon');
+@import url('https://fonts.googleapis.com/css?family=Over+the+Rainbow');
 
 /*general styles*/
 
@@ -11,8 +13,7 @@ body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
-    background: url("../background.jpg") no-repeat;
-    background-size: cover;
+    background-color: black;
 }
 
 /*index page styles*/
@@ -280,3 +281,53 @@ fieldset {
 #app {
     overflow-y: hidden;
 }
+
+.header-image {
+    width: 100%;
+    height: 80%;
+}
+
+.title-text-above {
+    position: absolute;
+    top: 12%;
+    left: 15%;
+    font-family: 'Meddon', cursive;
+    font-size: 10vh;
+}
+
+.title-text-below {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    font-family: 'Meddon', cursive;
+    font-size: 9vh;
+    color: white;
+}
+
+.title-header {
+    position:relative;
+}
+
+.org-name-text {
+    position: absolute;
+    color: white;
+    bottom: 5%;
+    font-family: 'Montserrat';
+    left: 5%;
+    font-size: 2vh;
+}
+
+
+
+.home-image {
+    max-width: 100%;
+}
+
+.tables-space {
+    margin-top: 5%;
+    margin-left: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+
