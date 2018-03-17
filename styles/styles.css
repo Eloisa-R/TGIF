@@ -301,7 +301,10 @@ fieldset {
     bottom: 10%;
     font-family: 'Meddon', cursive;
     font-size: 9vh;
-    color: white;
+    background: url("../1372149189-768x452.jpg");
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .title-header {
