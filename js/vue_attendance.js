@@ -55,15 +55,18 @@ var tablesApp = new Vue({
         headers_tables: [
             {
                 text: 'Name',
-                value: 'last_name'
+                value: 'last_name',
+                sortable: false
             },
             {
                 text: 'No. of Missed Votes',
-                value: 'missed_votes'
+                value: 'missed_votes',
+                sortable: false
             },
             {
                 text: '% Missed',
-                value: 'missed_votes_pct'
+                value: 'missed_votes_pct',
+                sortable: false
             }
         ],
         membersMoreMissed: [],

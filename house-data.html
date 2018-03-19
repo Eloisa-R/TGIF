@@ -13,18 +13,18 @@
 </head>
 
 <body id="house">
-  <div id="app">
+    <div id="app">
         <v-app>
             <div data-app="true">
-               <div class="loader" id="loader">
+                <div class="loader" id="loader">
                     <img class="gif" src="load-dribbble.gif" alt="">
                 </div>
                 <div class="container">
                     <div class="row title-header">
-                       <div class="title-text-above">We the people</div>
-                       <img src="1372149189-768x452.jpg" class="header-image" alt="">
-                       <div class="title-text-below">deserve open data</div>
-                       <div class="org-name-text">Transparent Government in Fact</div>
+                        <div class="title-text-above">We the people</div>
+                        <img src="1372149189-768x452.jpg" class="header-image" alt="">
+                        <div class="title-text-below">deserve open data</div>
+                        <div class="org-name-text">Transparent Government in Fact</div>
                     </div>
                     <div class="row">
                         <nav class="navbar">
@@ -62,6 +62,7 @@
                     </div>
                     <div class="table-main-container" id="tableData">
                         <div class="table-main-child">
+                            <v-app>
                                 <v-card>
                                     <v-card-title>
                                         <v-spacer></v-spacer>
@@ -75,16 +76,15 @@
                                             <td class="text-xs-right">{{ props.item.seniority }}</td>
                                             <td class="text-xs-right">{{ props.item.votes_with_party_pct }}</td>
                                         </template>
-                                        <template slot="no-data">
-                                            <v-alert :value="true" color="error" icon="warning">
-                                                Sorry, no results available with these criteria
-                                            </v-alert>
-                                        </template>
-                                        <template slot="pageText" slot-scope="props">
-                                           Page {{ props.pageStart }} - {{ props.pageStop }} of {{ props.itemsLength }}
-                                        </template>
+                                        <v-alert slot="no-data" :value="true" color="error" icon="warning">
+                                            Sorry, no results available with these criteria
+                                        </v-alert>
+                                        <v-alert slot="no-results" :value="true" color="error" icon="warning">
+                                            Sorry, no results available with these criteria
+                                        </v-alert>
                                     </v-data-table>
                                 </v-card>
+                            </v-app>
                         </div>
                         <div class="table-main-child elevation-1">
                             <span>Filter by Party:</span>
@@ -113,8 +113,8 @@
                     </div>
                 </div>
             </div>
-      </v-app>
-    </div>          
+        </v-app>
+    </div>
     <!-- libraries for bootstrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

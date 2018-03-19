@@ -67,7 +67,7 @@
                     </div>
                     <div class="table-main-container" id="tableData">
                         <div class="table-main-child">
-
+                           <v-app>
                             <v-card>
                                 <v-card-title>
                                     <v-spacer></v-spacer>
@@ -81,17 +81,15 @@
                                         <td class="text-xs-right">{{ props.item.seniority }}</td>
                                         <td class="text-xs-right">{{ props.item.votes_with_party_pct }}</td>
                                     </template>
-                                    <template slot="no-data">
-                                        <v-alert :value="true" color="error" icon="warning">
-                                            Sorry, no results available with these criteria
-                                        </v-alert>
-                                    </template>
-                                    <template slot="pageText" slot-scope="props">
-                                       Page {{ props.pageStart }} - {{ props.pageStop }} of {{ props.itemsLength }}
-                                    </template>
+                                    <v-alert slot="no-data" :value="true" color="error" icon="warning">
+                                        Sorry, no results available with these criteria
+                                    </v-alert>
+                                    <v-alert slot="no-results" :value="true" color="error" icon="warning">
+                                        Sorry, no results available with these criteria
+                                    </v-alert>
                                 </v-data-table>
                             </v-card>
-
+                           </v-app>
                         </div>
                         <div class="table-main-child elevation-1">
                             <span>Filter by Party:</span>

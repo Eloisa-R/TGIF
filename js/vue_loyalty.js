@@ -55,15 +55,18 @@ var tablesApp = new Vue({
         headers_tables: [
             {
                 text: 'Name',
-                value: 'last_name'
+                value: 'last_name',
+                sortable: false
             },
             {
                 text: 'No. of Party Votes',
-                value: 'total_votes'
+                value: 'total_votes',
+                sortable: false
             },
             {
                 text: '% Voted with Party',
-                value: 'votes_with_party_pct'
+                value: 'votes_with_party_pct',
+                sortable: false
             }
         ],
         membersMoreVoted: [],
