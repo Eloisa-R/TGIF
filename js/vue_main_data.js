@@ -48,24 +48,24 @@ var tableApp = new Vue({
             this.selectedStatesArray.splice(this.selectedStatesArray.indexOf(event.target.parentElement.getAttribute('value')), 1)
 
         },
-        
-        showBox: function() {
-           $('a.iframe').colorbox({
-                    iframe: true,
-                    width: "60%",
-                    height: "60%"
-                })
-      }
+
+        showBox: function () {
+            $('a.iframe').colorbox({
+                iframe: true,
+                width: "60%",
+                height: "60%"
+            })
+        }
     },
-    
+
     computed: {
         filteredMembers: function () {
             function statesAndParties(member) {
-                if ((tableApp.selectedStatesArray.includes(member.state)  || tableApp.selectedStatesArray.length === 0) && (tableApp.checkedParties.includes(member.party) || tableApp.checkedParties.length === 0)) {
+                if ((tableApp.selectedStatesArray.includes(member.state) || tableApp.selectedStatesArray.length === 0) && (tableApp.checkedParties.includes(member.party) || tableApp.checkedParties.length === 0)) {
                     return member
                 }
             }
-            
+
             return this.members.filter(statesAndParties)
         }
     },
@@ -81,24 +81,21 @@ var tableApp = new Vue({
         if ($('tbody > tr').length > 1) {
             $('#loader').fadeOut()
         }
-    }
+    },
 
-})
+    created: function () {
 
+        $.getJSON(states_json_url, function (data) {
+            tableApp.states_list = data;
+        })
 
-$.getJSON(states_json_url, function (data) {
-    tableApp.states_list = data;
-})
-
-if ($("#senate").length) {
-    data_url = senate_url;
-} else if ($("#house").length) {
-    data_url = house_url;
-}
-
-$(document).ready(function () {
-    var control_array = []
-    $.getJSON(data_url, function (data) {
+        if ($("#senate").length) {
+            data_url = senate_url;
+        } else if ($("#house").length) {
+            data_url = house_url;
+        }
+        var control_array = []
+        $.getJSON(data_url, function (data) {
         data.results[0].members.map(function (member) {
             tableApp.members.push(member);
             if (!control_array.includes(member.state)) {
@@ -112,5 +109,8 @@ $(document).ready(function () {
             })
         })
     })
+
+    }
+
 })
 
